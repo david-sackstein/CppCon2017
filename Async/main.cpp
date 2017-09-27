@@ -12,7 +12,7 @@
 //See the License for the specific language governing permissions and
 //limitations under the License.
 
-#include <cstdio>
+#include <iostream>
 #include <future>
 #include <boost/asio/system_timer.hpp>
 #include <boost/asio/use_future.hpp>
@@ -22,18 +22,25 @@ using namespace std::chrono;
 using std::puts;
 
 std::future<void> sleepy(io_service &io) {
-	// make sure io_service does not exit until this function is done
-	io_service::work w{ io };
+	
+	io_service::work keep_io_service_alive { io };
 	system_timer timer(io);
+
 	timer.expires_from_now(1000ms);
+
 	co_await timer.async_wait(boost::asio::use_future);
-	puts("tick1");
+
+	std::cout << "After co_await 1\n";
 	timer.expires_from_now(1000ms);
+	
 	co_await timer.async_wait(boost::asio::use_future);
-	puts("tick2");
+
+	std::cout << "After co_await 2\n";
 	timer.expires_from_now(1000ms);
+
 	co_await timer.async_wait(boost::asio::use_future);
-	puts("tick3");
+
+	std::cout << "After co_await 3\n";
 }
 
 int main() {
@@ -41,3 +48,4 @@ int main() {
 	sleepy(io);
 	io.run();
 };
+

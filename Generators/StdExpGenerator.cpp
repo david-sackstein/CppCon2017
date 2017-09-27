@@ -1,5 +1,5 @@
-#include <experimental/generator>
 #include <iostream>
+#include <experimental/generator>
 
 template <typename T>
 using generator = std::experimental::generator<T>;
@@ -12,9 +12,9 @@ static generator<int> GenerateIntegers()
 	}
 }
 
-static generator<int> GenerateSquares(generator<int>& source)
+static generator<int> GenerateSquares(generator<int>& anotherSource)
 {
-	for (int i : source)
+	for (int i : anotherSource)
 	{
 		co_yield i * i;
 	}

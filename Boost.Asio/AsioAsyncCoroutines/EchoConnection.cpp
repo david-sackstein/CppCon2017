@@ -17,7 +17,7 @@ void EchoConnection::start()
 {
 	auto self(shared_from_this());
 
-	spawn(_strand, [self, this](yield_context yield)
+	boost::asio::spawn(_strand, [self, this](yield_context yield)
 	{
 		self->start(yield);
 	});

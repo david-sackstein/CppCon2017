@@ -2,13 +2,11 @@
 
 void BoostGenerator();
 void StdExpGenerator();
-void BoostSink();
 
 void main()
 {
-	//BoostGenerator();
+	BoostGenerator();
 	//StdExpGenerator();
-	BoostSink();
 
 	_getch();
 }

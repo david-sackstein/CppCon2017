@@ -22,7 +22,7 @@
     <ProjectGuid>{8E50B609-3E90-48A7-80E3-B87431137DA8}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Coroutines</RootNamespace>
-    <ProjectName>C. AsioSyncCoroutines</ProjectName>
+    <ProjectName>C. AsioAsyncCoroutines</ProjectName>
     <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

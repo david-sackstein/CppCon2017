@@ -35,9 +35,9 @@ error_code AsyncMessenger::read(char* data, size_t size)
 		buffer(data, size),
 		transfer_all(),
 		[&](const error_code& ec, size_t bytes_transferred)
-	{
-		pr.set_value(ec);
-	});
+		{
+			pr.set_value(ec);
+		});
 
 	return fu.get();
 }

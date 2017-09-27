@@ -76,7 +76,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BoostConsumer.cpp" />
     <ClCompile Include="BoostGenerator.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="StdExpGenerator.cpp" />

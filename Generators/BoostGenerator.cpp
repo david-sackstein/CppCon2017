@@ -1,5 +1,5 @@
-#include <boost/coroutine2/all.hpp>
 #include <iostream>
+#include <boost/coroutine2/all.hpp>
 
 template<typename T>
 using pull_type = typename boost::coroutines2::asymmetric_coroutine<T>::pull_type;
@@ -9,23 +9,32 @@ using push_type = typename boost::coroutines2::asymmetric_coroutine<T>::push_typ
 
 static pull_type<int> GenerateIntegers()
 {
-	return pull_type<int> ([](push_type<int>& sink)
+	pull_type<int> source ([](push_type<int>& sink)
 	{
 		for (int i = 0; i < 5; i++)
 		{
 			sink(i);
 		}
 	});
+
+	return source;
 }
 
-static pull_type<int> GenerateSquares(pull_type<int>& source)
+static pull_type<int> ExtractedMethod(
+	pull_type<int>& anotherSource, 
+	push_type<int>& sink)
+{
+	for (int i : anotherSource)
+	{
+		sink(i * i);
+	}
+}
+
+static pull_type<int> GenerateSquares(pull_type<int>& anotherSource)
 {
 	return pull_type<int> ([&](push_type<int>& sink)
 	{
-		for (int i : source)
-		{
-			sink(i * i);
-		}
+		ExtractedMethod(anotherSource, sink);
 	});
 }
 
