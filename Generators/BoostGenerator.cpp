@@ -20,7 +20,7 @@ static pull_type<int> GenerateIntegers()
 	return source;
 }
 
-static pull_type<int> ExtractedMethod(
+static void ExtractedMethod(
 	pull_type<int>& anotherSource, 
 	push_type<int>& sink)
 {
